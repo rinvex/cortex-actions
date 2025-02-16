@@ -1,0 +1,45 @@
+{
+    "name": "cortex/actions",
+    "type": "cortex-module",
+    "description": "Easily add beautiful action modals to any Livewire component.",
+    "license": "MIT",
+    "homepage": "https://rinvex.com",
+    "support": {
+        "email": "help@rinvex.com",
+        "source": "https://github.com/rinvex/cortex-actions",
+        "issues": "https://github.com/rinvex/cortex-actions/issues"
+    },
+    "require": {
+        "php": "^8.3.0",
+        "anourvalar/eloquent-serialize": "^1.2.0",
+        "cortex/forms": "self.version",
+        "cortex/infolists": "self.version",
+        "cortex/notifications": "self.version",
+        "cortex/support": "self.version",
+        "illuminate/contracts": "^11.0.0 || ^12.0.0",
+        "illuminate/database": "^11.0.0 || ^12.0.0",
+        "illuminate/support": "^11.0.0 || ^12.0.0",
+        "league/csv": "^9.16.0",
+        "openspout/openspout": "^4.23",
+        "rinvex/laravel-packages": "^11.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cortex\\Actions\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cortex\\Actions\\Providers\\ActionsServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
