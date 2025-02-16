@@ -1,0 +1,47 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+
+    'single' => [
+
+        'label' => 'Asociar',
+
+        'modal' => [
+
+            'heading' => 'Asociar :label',
+
+            'fields' => [
+
+                'record_id' => [
+                    'label' => 'Registro',
+                ],
+
+            ],
+
+            'actions' => [
+
+                'associate' => [
+                    'label' => 'Asociar',
+                ],
+
+                'associate_another' => [
+                    'label' => 'Asociar y asociar otra',
+                ],
+
+            ],
+
+        ],
+
+        'notifications' => [
+
+            'associated' => [
+                'title' => 'Asociada',
+            ],
+
+        ],
+
+    ],
+
+];

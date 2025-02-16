@@ -1,0 +1,60 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Cortex\Actions\Concerns;
+
+use Closure;
+use Cortex\Support\Facades\CortexView;
+
+use function Cortex\Support\is_app_url;
+
+trait CanRedirect
+{
+    protected string | Closure | null $failureRedirectUrl = null;
+
+    protected string | Closure | null $successRedirectUrl = null;
+
+    public function dispatchFailureRedirect(): static
+    {
+        $url = $this->evaluate($this->failureRedirectUrl) ?? $this->getHasActionsLivewire()->getDefaultActionFailureRedirectUrl($this);
+
+        if (filled($url)) {
+            $this->redirect($url);
+        }
+
+        return $this;
+    }
+
+    public function dispatchSuccessRedirect(): static
+    {
+        $url = $this->evaluate($this->successRedirectUrl) ?? $this->getHasActionsLivewire()->getDefaultActionSuccessRedirectUrl($this);
+
+        if (filled($url)) {
+            $this->redirect($url);
+        }
+
+        return $this;
+    }
+
+    public function redirect(string | Closure $url): void
+    {
+        $url = $this->evaluate($url);
+
+        $this->getLivewire()->redirect($url, navigate: cortex()->getCurrentOrDefaultPanel()->hasSpaMode() && is_app_url($url));
+    }
+
+    public function failureRedirectUrl(string | Closure | null $url): static
+    {
+        $this->failureRedirectUrl = $url;
+
+        return $this;
+    }
+
+    public function successRedirectUrl(string | Closure | null $url): static
+    {
+        $this->successRedirectUrl = $url;
+
+        return $this;
+    }
+}
